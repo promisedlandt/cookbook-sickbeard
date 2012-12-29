@@ -1,0 +1,16 @@
+description "Sickbeard"
+author "Chef"
+
+start on (filesystem and net-device-up)
+stop on runlevel [!2345]
+
+respawn
+respawn limit 5 30
+
+chdir <%= node[:sickbeard][:home_dir] %>
+setuid <%= node[:sickbeard][:user] %>
+setgid <%= node[:sickbeard][:group] %>
+
+exec python SickBeard.py -p <%= node[:sickbeard][:http_port] %> --config <%= node[:sickbeard][:config_dir] %>/sickbeard.ini --datadir <%= node[:sickbeard][:data_dir] %>
+
+emits sickbeard-running
