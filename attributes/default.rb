@@ -17,6 +17,7 @@ default[:sickbeard][:git][:sha] = "master"
 
 default[:sickbeard][:proxy][:enable] = true
 default[:sickbeard][:proxy][:enable_ssl] = false
+default[:sickbeard][:proxy][:ssl_source] = "databag"
 default[:sickbeard][:proxy][:ssl_certificate_name] = "sickbeard"
 default[:sickbeard][:proxy][:skip_webserver_installation] = false
 

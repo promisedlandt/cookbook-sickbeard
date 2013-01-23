@@ -39,7 +39,8 @@ Attribute | Description | Type | Default
 skip_webserver_installation | Set to true if you want to skip the webserver installation | Boolean | false
 enable | Should the proxy site be enabled? | Boolean | true
 enable_ssl | Use SSL only in the proxy? | Boolean | false
-ssl_certificate_name | name of the certificate on the filesystem | String | sickbeard
+ssl_source | Where to get SSL key / certificate (see section below) | String | databag
+ssl_certificate_name | name of the SSL certificate (both on the filesystem and the databag item) | String | sickbeard
 cert_key_pair | See "Proxy SSL" below | Hash | nil
 
 #### nginx
@@ -80,4 +81,7 @@ none
 
 # Proxy SSL
 
+By default, if using chef-solo, set `node[:sickbeard][:proxy][:cert_key_pair]`, otherwise add an entry `sickbeard` to an `nginx_ssl_certs` databag.  
+However, you can force reading from attributes when *not* using chef-solo by setting `node[:sickbeard][:proxy][:ssl_source] = "attribute"`.
 
+Whichever you choose, the value needs to be a Hash with `"cert"` and `"key"` keys and a certificate and key as values.

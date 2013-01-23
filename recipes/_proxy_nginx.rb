@@ -21,14 +21,18 @@ if node[:sickbeard][:proxy][:enable_ssl]
     recursive true
   end
 
-  if Chef::Config[:solo]
-    cert_key_pair = node[:sickbeard][:proxy][:cert_key_pair].first
+  if Chef::Config[:solo] || node[:sickbeard][:proxy][:ssl_source] == "attribute"
+    cert_key_pair = node[:sickbeard][:proxy][:cert_key_pair]
+    cert_content = cert_key_pair["cert"]
+    key_content = cert_key_pair["key"]
   else
-    cert_key_pair = search(:nginx_ssl_certs, "id:sickbeard").first
+    cert_key_pair = search(:nginx_ssl_certs, "id:#{ node[:sickbeard][:proxy][:ssl_certificate_name] }").first
+    cert_content = cert_key_pair["cert"].join("\n")
+    key_content = cert_key_pair["key"].join("\n")
   end
 
   file "#{ ssl_file_stem }.crt" do
-    content cert_key_pair["cert"].join("\n")
+    content cert_content
     owner node[:nginx][:user]
     group "root"
     mode "0600"
@@ -36,7 +40,7 @@ if node[:sickbeard][:proxy][:enable_ssl]
   end
 
   file "#{ ssl_file_stem }.key" do
-    content cert_key_pair["key"].join("\n")
+    content key_content
     owner node[:nginx][:user]
     group "root"
     mode "0600"
