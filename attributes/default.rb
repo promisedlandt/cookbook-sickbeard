@@ -15,10 +15,11 @@ default[:sickbeard][:http_port] = "8081"
 default[:sickbeard][:git][:url] = "https://github.com/midgetspy/Sick-Beard.git"
 default[:sickbeard][:git][:sha] = "master"
 
-default[:sickbeard][:proxy][:enable] = true
+default[:sickbeard][:proxy][:flavor] = "none"
 default[:sickbeard][:proxy][:enable_ssl] = false
 default[:sickbeard][:proxy][:ssl_source] = "databag"
 default[:sickbeard][:proxy][:ssl_certificate_name] = "sickbeard"
 default[:sickbeard][:proxy][:skip_webserver_installation] = false
+default[:sickbeard][:proxy][:templates_cookbook] = "sickbeard"
 
 default[:sickbeard][:proxy][:nginx][:server_name] = "_"

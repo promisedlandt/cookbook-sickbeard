@@ -56,6 +56,7 @@ template ::File.join(node[:nginx][:dir], "sites-available", "sickbeard") do
     :ssl_file_stem => ssl_file_stem
   )
   source node[:sickbeard][:proxy][:enable_ssl] ? "nginx-site-available-ssl.erb" : "nginx-site-available.erb"
+  cookbook node[:sickbeard][:proxy][:templates_cookbook]
 end
 
 nginx_site "sickbeard" do

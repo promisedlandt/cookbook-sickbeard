@@ -53,6 +53,6 @@ else
 end
 
 # HTTP proxy
-if ["nginx"].include?(node[:sickbeard][:proxy_flavor])
-  include_recipe "sickbeard::_proxy_#{ node[:sickbeard][:proxy_flavor] }"
+if ["nginx"].include?(node[:sickbeard][:proxy][:flavor])
+  include_recipe "sickbeard::_proxy_#{ node[:sickbeard][:proxy][:flavor] }"
 end
