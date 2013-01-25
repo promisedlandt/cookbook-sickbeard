@@ -2,7 +2,7 @@ server {
   listen 80;
   server_name <%= node[:sickbeard][:proxy][:nginx][:server_name] %>;
 
-  location / {
+  location <%= node[:sickbeard][:proxy][:nginx][:location] %> {
     rewrite ^ https://$host$request_uri break;
   }
 }
@@ -11,7 +11,7 @@ server {
   listen 443;
   server_name <%= node[:sickbeard][:proxy][:nginx][:server_name] %>;
 
-  location / {
+  location <%= node[:sickbeard][:proxy][:nginx][:location] %> {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
     proxy_redirect    off;

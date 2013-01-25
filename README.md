@@ -49,6 +49,7 @@ templates_cookbook | Which cookbook to use proxy templates from | String | sickb
 Attribute | Description | Type | Default
 --------- | ----------- | ---- | -------
 server_name | server_name nginx should listen on | String | "_"
+location | nginx location directive | String | "/"
 
 ## git
 

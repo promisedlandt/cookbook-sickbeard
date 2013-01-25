@@ -23,3 +23,4 @@ default[:sickbeard][:proxy][:skip_webserver_installation] = false
 default[:sickbeard][:proxy][:templates_cookbook] = "sickbeard"
 
 default[:sickbeard][:proxy][:nginx][:server_name] = "_"
+default[:sickbeard][:proxy][:nginx][:location] = "/"

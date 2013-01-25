@@ -1,7 +1,7 @@
 server {
   server_name <%= node[:sickbeard][:proxy][:nginx][:server_name] %>;
 
-  location / {
+  location <%= node[:sickbeard][:proxy][:nginx][:location] %> {
     proxy_pass        http://127.0.0.1:<%= node[:sickbeard][:http_port] %>;
     proxy_redirect    off;
     proxy_set_header  Host             $http_host;
