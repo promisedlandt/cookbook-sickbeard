@@ -29,3 +29,8 @@ default[:sickbeard][:proxy][:templates_cookbook] = "sickbeard"
 
 default[:sickbeard][:proxy][:nginx][:server_name] = "_"
 default[:sickbeard][:proxy][:nginx][:location] = "/"
+
+default[:sickbeard][:dns][:dns_source] = "search"
+default[:sickbeard][:dns][:ip_address] = "127.0.0.1"
+default[:sickbeard][:dns][:hostname] = "sickbeard"
+default[:sickbeard][:dns][:sickbeard_role] = "role_sickbeard"

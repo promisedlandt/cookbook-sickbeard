@@ -16,6 +16,12 @@ Chef 0.10.8 and Ohai 0.6.12
 
 ## sickbeard::default
 
+Installs Sick Beard, optionally with an init script and HTTP proxy.
+
+## sickbeard::dns
+
+Set up a dns entry to your Sick Beard server.
+
 # Attributes
 
 ## default
@@ -59,6 +65,15 @@ Attribute | Description | Type | Default
 --------- | ----------- | ---- | -------
 url | URL of the git repo you want to install from (if installing from git) | String | https://github.com/midgetspy/Sick-Beard.git
 sha | Use if you want to install a specific revision | String | master
+
+## dns
+
+Attribute | Description | Type | Default
+--------- | ----------- | ---- | -------
+dns_source | Where to find the ip address for the dns entry. "search" for chef search, or "attribute" | String | search
+ip_address | Used if dns_source is set to attribute (or in chef-solo) | String | 127.0.0.1
+sickbeard_role | If using search, name of the role to search for | String | role_sickbeard
+hostname | Hostname for dns entry | String | sickbeard
 
 ### init_style
 

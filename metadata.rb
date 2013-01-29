@@ -8,5 +8,6 @@ version          "0.1.1"
 
 depends "python"
 depends "git"
+depends "hostsfile"
 
 supports "ubuntu"
