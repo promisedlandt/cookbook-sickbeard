@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
+package "upstart"
+
 template "/etc/init/sickbeard.conf" do
   source "sickbeard.upstart.erb"
   mode 0644
