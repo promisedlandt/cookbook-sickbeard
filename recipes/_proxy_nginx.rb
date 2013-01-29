@@ -60,5 +60,5 @@ template ::File.join(node[:nginx][:dir], "sites-available", "sickbeard") do
 end
 
 nginx_site "sickbeard" do
-  enable node[:sickbeard][:proxy][:enable]
+  enable node[:sickbeard][:proxy][:enable_site]
 end

@@ -1,6 +1,10 @@
 default[:sickbeard][:user] = "sickbeard"
 default[:sickbeard][:group] = "sickbeard"
 
+default[:sickbeard][:prereq_packages] = value_for_platform_family(
+                                          "default" => ["python-cheetah"]
+                                        )
+
 default[:sickbeard][:init_style] = "upstart"
 default[:sickbeard][:install_method] = "git"
 
@@ -16,6 +20,7 @@ default[:sickbeard][:git][:url] = "https://github.com/midgetspy/Sick-Beard.git"
 default[:sickbeard][:git][:sha] = "master"
 
 default[:sickbeard][:proxy][:flavor] = "none"
+default[:sickbeard][:proxy][:enable_site] = true
 default[:sickbeard][:proxy][:enable_ssl] = false
 default[:sickbeard][:proxy][:ssl_source] = "databag"
 default[:sickbeard][:proxy][:ssl_certificate_name] = "sickbeard"

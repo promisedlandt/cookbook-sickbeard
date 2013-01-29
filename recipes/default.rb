@@ -9,11 +9,7 @@
 
 include_recipe "python" unless node[:sickbeard][:skip_python_installation]
 
-prereq_packages = value_for_platform_family(
-  "default" => ["python-cheetah"]
-)
-
-prereq_packages.each do |pkg|
+node[:sickbeard][:prereq_packages].each do |pkg|
   package pkg
 end
 
