@@ -8,7 +8,7 @@
 #
 
 link "/etc/init.d/sickbeard" do
-  to ::File.join(node[:sickbeard][:home_dir], "init.ubuntu"
+  to ::File.join(node[:sickbeard][:home_dir], "init.ubuntu")
 end
 
 template "/etc/default/sickbeard" do
