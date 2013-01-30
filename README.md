@@ -85,6 +85,10 @@ SysV style init script, installed under /etc/init.d/sickbeard
 
 Upstart script, installed under /etc/init/sickbeard.conf
 
+#### runit
+
+Runit script, installed under /etc/sv/sickbeard/run
+
 ### install_style
 
 #### git
