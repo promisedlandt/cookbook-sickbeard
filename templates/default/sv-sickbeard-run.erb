@@ -1,0 +1,3 @@
+#!/bin/sh
+exec 2>&1
+exec chpst -u <%= node[:sickbeard][:user] %>:<%= node[:sickbeard][:group] %> python <%= ::File.join(node[:sickbeard][:home_dir], "SickBeard.py") %> -p <%= node[:sickbeard][:http_port] %> --config <%= node[:sickbeard][:config_dir] %>/sickbeard.ini --datadir <%= node[:sickbeard][:data_dir] %>

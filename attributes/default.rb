@@ -8,8 +8,6 @@ default[:sickbeard][:prereq_packages] = value_for_platform_family(
 default[:sickbeard][:init_style] = "upstart"
 default[:sickbeard][:install_method] = "git"
 
-default[:sickbeard][:service_to_be_notified] = "service[sickbeard]"
-
 default[:sickbeard][:home_dir] = "/srv/sickbeard/server"
 default[:sickbeard][:data_dir] = "/srv/sickbeard/data"
 default[:sickbeard][:config_dir] = "/etc/sickbeard"

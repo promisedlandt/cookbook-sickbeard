@@ -7,6 +7,13 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# Set name of the service to be notified depending on the init type
+node.set[:sickbeard][:service_to_be_notified] = if node[:sickbeard][:init_style] == "runit"
+                                                  "runit_service[sickbeard]"
+                                                else
+                                                  "service[sickbeard]"
+                                                end
+
 include_recipe "python" unless node[:sickbeard][:skip_python_installation]
 
 node[:sickbeard][:prereq_packages].each do |pkg|
@@ -42,7 +49,7 @@ else
 end
 
 # Which init style do we want to use?
-if ["sysv", "upstart"].include?(node[:sickbeard][:init_style])
+if ["runit", "sysv", "upstart"].include?(node[:sickbeard][:init_style])
   include_recipe "sickbeard::_init_#{ node[:sickbeard][:init_style] }"
 else
   Chef::Log.warn("sickbeard: init style not recognized or set: #{ node[:sickbeard][:init_style] }")
